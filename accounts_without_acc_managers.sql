@@ -130,5 +130,23 @@ SELECT
     WHEN 
       classification = 'LOSS' 
     THEN 5
-  END AS band_order
+  END AS class_order,
+  CASE 
+    WHEN 
+      balance_band = '0 - 500K' 
+    THEN 1
+    WHEN 
+      balance_band = '500K - 1M' 
+    THEN 2
+    WHEN 
+      balance_band = '1M - 2M' 
+    THEN 3
+    WHEN 
+      balance_band = '2M - 5M' 
+    THEN 4
+    WHEN 
+      balance_band = '5M - 10M' 
+    THEN 5
+    ELSE 6 -- 'Above 10M'
+  END AS balance_band_order
 FROM merged;
