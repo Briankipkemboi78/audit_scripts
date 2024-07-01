@@ -58,6 +58,7 @@ merged AS (
     accounts.sanct_lim                 AS disbursed_amount,
     accounts.clr_bal_amt * -1          AS outstanding_balance,
     accounts.schm_code                 AS scheme_code,
+    accounts.product_name,
     accounts.schm_type                 AS scheme_type,
     accounts.cif_id                    AS cif_id,
     accounts.acct_mgr_user_id          AS account_manager,
@@ -94,6 +95,7 @@ SELECT
     ELSE 'Above 10M'
   END AS balance_band,
   scheme_code,
+  product_name,
   scheme_type,
   cif_id,
   account_manager,
