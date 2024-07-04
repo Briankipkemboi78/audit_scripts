@@ -11,13 +11,13 @@ SELECT
   CASE 
     WHEN 
       gam.CLR_BAL_AMT * -1 BETWEEN 1000 AND 100000 
-    THEN '1000 - 100000'
+    THEN '1K - 100K'
     WHEN 
       gam.CLR_BAL_AMT * -1 BETWEEN 100001 AND 500000 
-    THEN '100001 - 500000'
+    THEN '100K - 500K'
     WHEN 
       gam.CLR_BAL_AMT * -1 BETWEEN 500001 AND 1000000 
-    THEN '500001 - 1M'
+    THEN '500K - 1M'
     WHEN 
       gam.CLR_BAL_AMT * -1 BETWEEN 1000001 AND 2000000 
     THEN '1M - 2M'
@@ -26,7 +26,7 @@ SELECT
     THEN '2M - 5M'
     WHEN 
       gam.CLR_BAL_AMT * -1 > 5000000 THEN 'Above 5M'
-  END AS band
+  END                                                  AS band,
   lam.DIS_AMT                                          AS disbursed_amount,
   CASE 
     WHEN 
