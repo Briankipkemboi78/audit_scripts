@@ -50,8 +50,7 @@ SELECT
       class.sub_classification_system IN (
         'SUBS', 
         'DBTL',
-        'LOSS'
-        ) 
+        'LOSS') 
     THEN 'Non Peforming'
     ELSE 'Performing'
   END                                                  AS loan_status
