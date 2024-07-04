@@ -6,7 +6,9 @@ SELECT
   CAST(gam.CIF_ID AS VARCHAR2(50))                    AS cif_id, 
   CAST(gam.FORACID AS VARCHAR2(50))                   AS account_no, 
   gam.ACCT_NAME                                       AS account_name,
-  gam.rcre_time,
+  code.SCHM_DESC                                      AS product_name,
+  gam.rcre_time                                       AS disbursed_date,
+  TO_CHAR(gam.rcre_time, 'MON-YYYY')                  AS disbursed_month,
   gam.CLR_BAL_AMT * -1                                AS outstanding_balance,
   CASE 
     WHEN 
@@ -50,7 +52,8 @@ SELECT
       class.sub_classification_system IN (
         'SUBS', 
         'DBTL',
-        'LOSS') 
+        'LOSS'
+        ) 
     THEN 'Non Peforming'
     ELSE 'Performing'
   END                                                  AS loan_status
